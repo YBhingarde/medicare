@@ -1,0 +1,646 @@
+/* MediCare dashboards - role themes, hero banner and motion. Loaded after dashboard.css. */
+
+/* ================= ROLE THEMES ================= */
+/* Admin: indigo + dark sidebar */
+.dash.role-admin {
+    --pc: #2563eb;
+    --pc2: #0ea5e9;
+    --acc: #22c7b8;
+    --pc-soft: #e7f0ff;
+    --mint: #e7f0ff;
+    --bg: #f1f6fe;
+    --sand: #f1f6fe;
+    --glow: 37, 99, 235;
+    --bs-primary: #2563eb;
+    --bs-primary-rgb: 37, 99, 235;
+    --bs-link-color: #2563eb;
+    --bs-link-hover-color: #1d4ed8;
+}
+/* Doctor: teal / emerald */
+.dash.role-doctor {
+    --pc: #0d9488;
+    --pc2: #16a34a;
+    --acc: #3b82f6;
+    --pc-soft: #dff5f1;
+    --mint: #dff5f1;
+    --bg: #f1f9f7;
+    --sand: #f1f9f7;
+    --glow: 13, 148, 136;
+    --bs-primary: #0d9488;
+    --bs-primary-rgb: 13, 148, 136;
+    --bs-link-color: #0d9488;
+    --bs-link-hover-color: #0b766c;
+}
+/* Patient: warm coral / pink */
+.dash.role-patient {
+    --pc: #e2531f;
+    --pc2: #ec4899;
+    --acc: #8b5cf6;
+    --pc-soft: #ffece4;
+    --mint: #ffece4;
+    --bg: #fff8f4;
+    --sand: #fff8f4;
+    --glow: 226, 83, 31;
+    --bs-primary: #e2531f;
+    --bs-primary-rgb: 226, 83, 31;
+    --bs-link-color: #d1470f;
+    --bs-link-hover-color: #b53b0a;
+}
+
+html[data-theme="dark"] .dash.role-admin {
+    --bg: #0a1424;
+    --sand: #0a1424;
+    --card: #101c33;
+    --side: #0c1730;
+    --line: #22314f;
+    --pc-soft: #1c3463;
+    --mint: #1c3463;
+    --pc: #60a5fa;
+}
+html[data-theme="dark"] .dash.role-doctor {
+    --bg: #0b1613;
+    --sand: #0b1613;
+    --card: #12211d;
+    --side: #0f1c18;
+    --line: #1f3730;
+    --pc-soft: #143a34;
+    --mint: #143a34;
+    --pc: #14b8a6;
+}
+html[data-theme="dark"] .dash.role-patient {
+    --bg: #161010;
+    --sand: #161010;
+    --card: #211817;
+    --side: #1b1312;
+    --line: #3a2a27;
+    --pc-soft: #40231a;
+    --mint: #40231a;
+    --pc: #f0693a;
+}
+
+/* buttons, icons and tags follow the theme */
+.dash .btn-primary {
+    --bs-btn-bg: var(--pc);
+    --bs-btn-border-color: var(--pc);
+    --bs-btn-hover-bg: var(--pc);
+    --bs-btn-hover-border-color: var(--pc);
+    --bs-btn-active-bg: var(--pc);
+    --bs-btn-active-border-color: var(--pc);
+    background-image: linear-gradient(135deg, var(--pc), var(--pc2));
+    border: 0;
+    position: relative;
+    overflow: hidden;
+}
+.dash .btn-primary:hover {
+    filter: brightness(1.07);
+    box-shadow: 0 8px 18px rgba(var(--glow), 0.32);
+}
+.dash .btn-outline-primary {
+    --bs-btn-color: var(--pc);
+    --bs-btn-border-color: var(--pc);
+    --bs-btn-hover-bg: var(--pc);
+    --bs-btn-hover-border-color: var(--pc);
+    --bs-btn-active-bg: var(--pc);
+    --bs-btn-active-border-color: var(--pc);
+}
+.dash .ico-indigo {
+    background: var(--pc-soft);
+    color: var(--pc);
+}
+.dash .tag-indigo {
+    border-color: var(--pc-soft);
+    color: var(--pc);
+    background: var(--pc-soft);
+}
+.dash .pp-tabs a.active,
+.dash .pp-chip:hover {
+    border-color: var(--pc);
+}
+.dash .form-control:focus,
+.dash .form-select:focus {
+    border-color: var(--pc);
+    box-shadow: 0 0 0 0.2rem rgba(var(--glow), 0.15);
+}
+.dash .btn-ripple {
+    position: absolute;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.45);
+    transform: scale(0);
+    animation: ripple 0.6s linear;
+    pointer-events: none;
+}
+@keyframes ripple {
+    to {
+        transform: scale(4);
+        opacity: 0;
+    }
+}
+
+/* ================= SIDEBAR ================= */
+.dash .side {
+    box-shadow: 2px 0 24px rgba(30, 35, 80, 0.04);
+}
+.dash .brand {
+    font-size: 1.2rem;
+    letter-spacing: -0.01em;
+}
+.dash .brand i {
+    width: 34px;
+    height: 34px;
+    border-radius: 10px;
+    display: grid;
+    place-items: center;
+    color: #fff;
+    font-size: 1rem;
+    background: linear-gradient(135deg, var(--pc), var(--pc2));
+    box-shadow: 0 6px 14px rgba(var(--glow), 0.35);
+    animation: beat 2.4s ease-in-out infinite;
+}
+@keyframes beat {
+    0%,
+    60%,
+    100% {
+        transform: scale(1);
+    }
+    15% {
+        transform: scale(1.12);
+    }
+    30% {
+        transform: scale(0.98);
+    }
+    45% {
+        transform: scale(1.08);
+    }
+}
+.dash .side a.mi.active {
+    background: linear-gradient(90deg, var(--pc-soft), transparent);
+    box-shadow: inset 3px 0 0 var(--pc);
+}
+.dash .side a.mi:hover {
+    transform: translateX(2px);
+}
+.dash .upgrade {
+    background: linear-gradient(135deg, var(--pc-soft), transparent);
+    border: 1px dashed var(--line);
+    text-align: left;
+    display: flex;
+    flex-direction: column;
+    gap: 0.1rem;
+    word-break: break-all;
+}
+.dash .upgrade .role-pill {
+    align-self: flex-start;
+    font-size: 0.62rem;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    font-weight: 700;
+    padding: 0.12rem 0.55rem;
+    border-radius: 99px;
+    color: #fff;
+    background: linear-gradient(135deg, var(--pc), var(--pc2));
+}
+
+.dash.role-admin .side {
+    background: linear-gradient(185deg, #0f2a5f 0%, #081633 100%);
+    border-right: 0;
+}
+.dash.role-admin .side .brand,
+.dash.role-admin .side a.mi,
+.dash.role-admin .side button.mi {
+    color: #d6e4fb !important;
+}
+.dash.role-admin .side a.mi i,
+.dash.role-admin .side button.mi i {
+    color: #8db3ea !important;
+}
+.dash.role-admin .side .menu-label {
+    color: #7f9bd0;
+}
+.dash.role-admin .side a.mi:hover,
+.dash.role-admin .side a.mi.active {
+    background: rgba(255, 255, 255, 0.09);
+    color: #fff !important;
+}
+.dash.role-admin .side a.mi.active {
+    background: linear-gradient(
+        90deg,
+        rgba(56, 168, 245, 0.35),
+        rgba(255, 255, 255, 0.02)
+    );
+    box-shadow: inset 3px 0 0 #60a5fa;
+}
+.dash.role-admin .side a.mi:hover i,
+.dash.role-admin .side a.mi.active i {
+    color: #fff !important;
+}
+.dash.role-admin .side .sub {
+    border-left-color: rgba(255, 255, 255, 0.14);
+}
+.dash.role-admin .side .sub a {
+    color: #9fc0ee;
+}
+.dash.role-admin .side .sub a::before {
+    background: rgba(255, 255, 255, 0.2);
+}
+.dash.role-admin .side .sub a:hover,
+.dash.role-admin .side .sub a.on {
+    color: #fff;
+}
+.dash.role-admin .side .sub a.on::before,
+.dash.role-admin .side .sub a:hover::before {
+    background: #60a5fa;
+}
+.dash.role-admin .upgrade {
+    background: rgba(255, 255, 255, 0.06);
+    border-color: rgba(255, 255, 255, 0.15);
+    color: #a9c8f2;
+}
+.dash.role-admin .upgrade b {
+    color: #fff;
+}
+.dash.role-admin .brand {
+    color: #fff;
+}
+
+/* ================= TOPBAR / CARDS ================= */
+.dash .topbar {
+    backdrop-filter: blur(10px);
+    background: color-mix(in srgb, var(--card) 88%, transparent);
+}
+.dash .page-title {
+    font-size: 1.15rem;
+    letter-spacing: -0.01em;
+}
+.dash .card {
+    border-radius: 14px;
+    box-shadow: 0 2px 10px rgba(30, 35, 80, 0.035);
+    transition:
+        box-shadow 0.25s,
+        transform 0.25s,
+        border-color 0.25s;
+}
+.dash .card:hover {
+    box-shadow: 0 8px 24px rgba(30, 35, 80, 0.07);
+}
+.dash .card-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+.dash .card-header::before {
+    content: "";
+    width: 4px;
+    height: 15px;
+    border-radius: 4px;
+    margin-right: 0.55rem;
+    background: linear-gradient(var(--pc), var(--pc2));
+    flex: none;
+}
+.dash .card-header > :first-child {
+    flex: 1;
+}
+.dash .card-header a.small {
+    color: var(--pc);
+    text-decoration: none;
+    font-weight: 600;
+}
+.dash .avatar-sm {
+    background: linear-gradient(
+        135deg,
+        var(--pc-soft),
+        color-mix(in srgb, var(--pc) 22%, var(--pc-soft))
+    );
+}
+
+/* ================= HERO ================= */
+.dash .hero {
+    position: relative;
+    overflow: hidden;
+    border-radius: 18px;
+    color: #fff;
+    margin-bottom: 1.1rem;
+    padding: 1.5rem 1.7rem;
+    background: linear-gradient(120deg, var(--pc) 0%, var(--pc2) 100%);
+    box-shadow: 0 14px 34px rgba(var(--glow), 0.28);
+}
+.dash .hero .blob {
+    position: absolute;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.14);
+    animation: blob 9s ease-in-out infinite;
+}
+.dash .hero .b1 {
+    width: 210px;
+    height: 210px;
+    right: -50px;
+    top: -90px;
+}
+.dash .hero .b2 {
+    width: 120px;
+    height: 120px;
+    right: 22%;
+    bottom: -70px;
+    animation-delay: -3s;
+}
+.dash .hero .b3 {
+    width: 70px;
+    height: 70px;
+    left: 44%;
+    top: 14px;
+    animation-delay: -6s;
+    background: rgba(255, 255, 255, 0.1);
+}
+@keyframes blob {
+    0%,
+    100% {
+        transform: translate(0, 0) scale(1);
+    }
+    50% {
+        transform: translate(-18px, 16px) scale(1.1);
+    }
+}
+.dash .hero .ecg {
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 6px;
+    width: 100%;
+    height: 58px;
+    opacity: 0.4;
+}
+.dash .hero .ecg path {
+    fill: none;
+    stroke: #fff;
+    stroke-width: 2.2;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+    stroke-dasharray: 420 780;
+    animation: ecg 3.6s linear infinite;
+}
+@keyframes ecg {
+    from {
+        stroke-dashoffset: 420;
+    }
+    to {
+        stroke-dashoffset: -780;
+    }
+}
+.dash .hero-in {
+    position: relative;
+    z-index: 1;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: flex-end;
+    gap: 1rem;
+}
+.dash .hero-hi {
+    font-size: 0.78rem;
+    text-transform: uppercase;
+    letter-spacing: 0.09em;
+    opacity: 0.85;
+    font-weight: 600;
+}
+.dash .hero h2 {
+    font-size: 1.6rem;
+    font-weight: 800;
+    margin: 0.15rem 0 0.3rem;
+    letter-spacing: -0.02em;
+}
+.dash .hero p {
+    margin: 0;
+    opacity: 0.92;
+    font-size: 0.88rem;
+    max-width: 560px;
+}
+.dash .hero-chips {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    margin-top: 0.9rem;
+}
+.dash .hero-chip {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.4rem;
+    font-size: 0.76rem;
+    font-weight: 600;
+    padding: 0.3rem 0.8rem;
+    border-radius: 99px;
+    background: rgba(255, 255, 255, 0.18);
+    border: 1px solid rgba(255, 255, 255, 0.28);
+    backdrop-filter: blur(6px);
+    animation: chipIn 0.6s cubic-bezier(0.2, 1.3, 0.4, 1) backwards;
+}
+.dash .hero-chip:nth-child(2) {
+    animation-delay: 0.12s;
+}
+.dash .hero-chip:nth-child(3) {
+    animation-delay: 0.24s;
+}
+@keyframes chipIn {
+    from {
+        opacity: 0;
+        transform: translateY(10px) scale(0.9);
+    }
+}
+.dash .hero-act {
+    display: flex;
+    gap: 0.5rem;
+    flex-wrap: wrap;
+}
+.dash .hero .btn-light {
+    color: var(--pc);
+    font-weight: 700;
+    border: 0;
+}
+.dash .hero .btn-glass {
+    color: #fff;
+    background: rgba(255, 255, 255, 0.18);
+    border: 1px solid rgba(255, 255, 255, 0.38);
+    font-weight: 600;
+}
+.dash .hero .btn-glass:hover {
+    background: rgba(255, 255, 255, 0.3);
+    color: #fff;
+}
+
+/* ================= STAT CARDS ================= */
+.dash .stat {
+    position: relative;
+    overflow: hidden;
+}
+.dash .stat::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 0;
+    height: 3px;
+    background: linear-gradient(90deg, var(--pc), var(--pc2));
+    transform: scaleX(0);
+    transform-origin: left;
+    transition: transform 0.45s;
+}
+.dash .stat:hover::after {
+    transform: scaleX(1);
+}
+.dash .stat .stat-glow {
+    position: absolute;
+    right: -30px;
+    top: -30px;
+    width: 110px;
+    height: 110px;
+    border-radius: 50%;
+    background: radial-gradient(
+        circle,
+        rgba(var(--glow), 0.13),
+        transparent 70%
+    );
+    transition: transform 0.5s;
+}
+.dash .stat:hover .stat-glow {
+    transform: scale(1.5);
+}
+.dash .stat .ico {
+    position: relative;
+    transition: transform 0.3s;
+}
+.dash .stat:hover .ico {
+    transform: rotate(-8deg) scale(1.12);
+}
+.dash .stat .val {
+    font-size: 1.65rem;
+    letter-spacing: -0.02em;
+}
+.dash .stat.stat-green .ico {
+    box-shadow: 0 6px 14px rgba(31, 157, 85, 0.22);
+}
+.dash .stat.stat-red .ico {
+    box-shadow: 0 6px 14px rgba(229, 72, 77, 0.22);
+}
+.dash .stat.stat-blue .ico {
+    box-shadow: 0 6px 14px rgba(43, 125, 233, 0.22);
+}
+.dash .stat.stat-amber .ico {
+    box-shadow: 0 6px 14px rgba(217, 138, 0, 0.22);
+}
+.dash .stat.stat-indigo .ico {
+    box-shadow: 0 6px 14px rgba(var(--glow), 0.22);
+}
+
+/* ================= MOTION ================= */
+.dash .rvl {
+    opacity: 0;
+    transform: translateY(22px) scale(0.985);
+    transition:
+        opacity 0.6s ease,
+        transform 0.6s cubic-bezier(0.2, 0.7, 0.2, 1);
+    transition-delay: var(--rd, 0ms);
+}
+.dash .rvl.in {
+    opacity: 1;
+    transform: none;
+}
+.dash .table tbody tr,
+.dash .list-row {
+    animation: rowIn 0.45s ease backwards;
+    animation-delay: calc(var(--i, 0) * 55ms + 150ms);
+}
+@keyframes rowIn {
+    from {
+        opacity: 0;
+        transform: translateX(-12px);
+    }
+}
+.dash .list-row {
+    transition:
+        transform 0.2s,
+        background 0.2s;
+    border-radius: 8px;
+}
+.dash .list-row:hover {
+    transform: translateX(4px);
+    background: rgba(var(--glow), 0.04);
+}
+.dash .status-pending {
+    position: relative;
+    padding-left: 1.05rem;
+}
+.dash .status-pending::before {
+    content: "";
+    position: absolute;
+    left: 0.45rem;
+    top: 50%;
+    width: 6px;
+    height: 6px;
+    margin-top: -3px;
+    border-radius: 50%;
+    background: #e69a00;
+    animation: blink 1.4s ease-in-out infinite;
+}
+@keyframes blink {
+    50% {
+        opacity: 0.25;
+        transform: scale(0.7);
+    }
+}
+.dash .mini {
+    transition:
+        transform 0.2s,
+        background 0.2s;
+}
+.dash .mini:hover {
+    transform: translateY(-3px);
+    background: var(--pc-soft);
+}
+.dash .hover-lift:hover {
+    box-shadow: 0 14px 30px rgba(var(--glow), 0.15);
+    border-color: rgba(var(--glow), 0.35);
+}
+.dash .rank {
+    width: 24px;
+    height: 24px;
+    border-radius: 50%;
+    display: grid;
+    place-items: center;
+    font-size: 0.7rem;
+    font-weight: 800;
+    color: #fff;
+    background: linear-gradient(135deg, var(--pc), var(--pc2));
+    flex: none;
+}
+.dash .doc-pill {
+    display: flex;
+    align-items: center;
+    gap: 0.7rem;
+}
+
+@media (max-width: 575px) {
+    .dash .hero {
+        padding: 1.2rem;
+    }
+    .dash .hero h2 {
+        font-size: 1.25rem;
+    }
+}
+@media (prefers-reduced-motion: reduce) {
+    .dash .rvl {
+        opacity: 1 !important;
+        transform: none !important;
+    }
+    .dash .hero .ecg path,
+    .dash .hero .blob,
+    .dash .brand i,
+    .dash .status-pending::before {
+        animation: none !important;
+    }
+}
+
+/* keep headers with a text + link layout correct on every page */
+.dash .card-header.justify-content-between {
+    justify-content: flex-start !important;
+}
+.dash .card-header > :last-child:not(:first-child) {
+    margin-left: auto;
+}

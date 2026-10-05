@@ -1,0 +1,432 @@
+/* MediCare - stars, rating pop-up and review lists (public site + dashboards) */
+.stars {
+    color: #f5a623;
+    letter-spacing: 1px;
+    white-space: nowrap;
+}
+.stars i {
+    font-size: inherit;
+}
+.stars.sm {
+    font-size: 0.78rem;
+}
+.stars.lg {
+    font-size: 1.15rem;
+}
+.rate-chip {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.3rem;
+    font-weight: 700;
+    font-size: 0.78rem;
+    color: #8a5a00;
+    background: #fff4d6;
+    border-radius: 99px;
+    padding: 0.12rem 0.55rem;
+}
+.rate-chip i {
+    color: #f5a623;
+}
+.rate-chip small {
+    font-weight: 500;
+    color: #a7822f;
+}
+
+/* ---------- rating pop-up ---------- */
+.mc-rate .modal-content {
+    border: 0;
+    border-radius: 20px;
+    overflow: hidden;
+    box-shadow: 0 30px 80px rgba(20, 20, 50, 0.35);
+}
+.mc-rate.fade .modal-dialog {
+    transform: translateY(40px) scale(0.94);
+    transition: transform 0.45s cubic-bezier(0.2, 1.1, 0.3, 1);
+}
+.mc-rate.show .modal-dialog {
+    transform: none;
+}
+.mc-rate .rate-head {
+    position: relative;
+    text-align: center;
+    color: #fff;
+    padding: 1.6rem 1rem 1.3rem;
+    overflow: hidden;
+    background: linear-gradient(
+        135deg,
+        var(--pc, #2563eb),
+        var(--pc2, #0ea5e9)
+    );
+}
+.mc-rate .rate-head::before,
+.mc-rate .rate-head::after {
+    content: "";
+    position: absolute;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.13);
+    animation: rtFloat 7s ease-in-out infinite;
+}
+.mc-rate .rate-head::before {
+    width: 150px;
+    height: 150px;
+    top: -60px;
+    right: -40px;
+}
+.mc-rate .rate-head::after {
+    width: 100px;
+    height: 100px;
+    bottom: -45px;
+    left: -25px;
+    animation-delay: -3s;
+}
+.mc-rate .btn-close {
+    position: absolute;
+    top: 14px;
+    right: 14px;
+    z-index: 2;
+    opacity: 0.85;
+}
+.mc-rate .rate-doc {
+    position: relative;
+    z-index: 1;
+    width: 76px;
+    height: 76px;
+    margin: 0 auto 0.6rem;
+    border-radius: 50%;
+    border: 3px solid rgba(255, 255, 255, 0.8);
+    background: rgba(255, 255, 255, 0.22);
+    display: grid;
+    place-items: center;
+    overflow: hidden;
+    font-size: 1.5rem;
+    animation: rtPop 0.6s cubic-bezier(0.2, 1.4, 0.4, 1) 0.15s backwards;
+}
+.mc-rate .rate-doc img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+.mc-rate .rate-sub {
+    position: relative;
+    z-index: 1;
+    font-size: 0.75rem;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    opacity: 0.85;
+}
+.mc-rate .rate-name {
+    position: relative;
+    z-index: 1;
+    font-weight: 700;
+    margin: 0.1rem 0 0;
+}
+.mc-rate .rate-meta {
+    position: relative;
+    z-index: 1;
+    font-size: 0.8rem;
+    opacity: 0.9;
+}
+.mc-rate .modal-body {
+    padding: 1.3rem 1.4rem 0.4rem;
+    text-align: center;
+}
+.mc-rate .rate-face {
+    font-size: 2.6rem;
+    line-height: 1;
+    height: 3rem;
+    transition: transform 0.25s;
+}
+.mc-rate .rate-face.bump {
+    animation: rtBump 0.45s ease;
+}
+.mc-rate .rate-stars {
+    display: flex;
+    justify-content: center;
+    gap: 0.35rem;
+    margin: 0.5rem 0 0.2rem;
+}
+.mc-rate .rate-star {
+    border: 0;
+    background: transparent;
+    padding: 0.1rem 0.15rem;
+    font-size: 2.1rem;
+    line-height: 1;
+    color: #d9dce6;
+    cursor: pointer;
+    transition:
+        transform 0.18s,
+        color 0.18s;
+}
+.mc-rate .rate-star:hover {
+    transform: scale(1.22) rotate(-6deg);
+}
+.mc-rate .rate-star.on {
+    color: #f5a623;
+    filter: drop-shadow(0 3px 6px rgba(245, 166, 35, 0.45));
+}
+.mc-rate .rate-star.pop {
+    animation: rtPop 0.4s cubic-bezier(0.2, 1.6, 0.4, 1);
+}
+.mc-rate .rate-word {
+    min-height: 1.4rem;
+    font-weight: 700;
+    color: #f08a00;
+    font-size: 0.95rem;
+    margin-bottom: 0.8rem;
+}
+.mc-rate .rate-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.4rem;
+    justify-content: center;
+    margin-bottom: 0.9rem;
+}
+.mc-rate .rate-tag input {
+    position: absolute;
+    opacity: 0;
+    pointer-events: none;
+}
+.mc-rate .rate-tag span {
+    display: inline-block;
+    font-size: 0.76rem;
+    padding: 0.3rem 0.75rem;
+    border: 1px solid #e3e5ee;
+    border-radius: 99px;
+    color: #5b6073;
+    cursor: pointer;
+    transition: all 0.18s;
+}
+.mc-rate .rate-tag span:hover {
+    border-color: var(--pc, #2563eb);
+    color: var(--pc, #2563eb);
+}
+.mc-rate .rate-tag input:checked + span {
+    background: var(--pc, #2563eb);
+    border-color: var(--pc, #2563eb);
+    color: #fff;
+    transform: scale(1.05);
+}
+.mc-rate .rate-tag input:focus-visible + span {
+    outline: 3px solid #f2a541;
+    outline-offset: 2px;
+}
+.mc-rate textarea {
+    resize: none;
+    font-size: 0.85rem;
+    border-radius: 12px;
+}
+.mc-rate .rate-count {
+    position: absolute;
+    right: 10px;
+    bottom: 6px;
+    color: #9aa0b4;
+    font-size: 0.68rem;
+}
+.mc-rate .rate-foot {
+    border: 0;
+    justify-content: space-between;
+    padding: 0.5rem 1.4rem 1rem;
+}
+.mc-rate .rate-foot .btn-primary:disabled {
+    opacity: 0.45;
+}
+@keyframes rtFloat {
+    0%,
+    100% {
+        transform: translate(0, 0);
+    }
+    50% {
+        transform: translate(-14px, 12px);
+    }
+}
+@keyframes rtPop {
+    0% {
+        transform: scale(0.4);
+    }
+    100% {
+        transform: scale(1);
+    }
+}
+@keyframes rtBump {
+    0% {
+        transform: scale(0.6) rotate(-12deg);
+    }
+    60% {
+        transform: scale(1.25) rotate(6deg);
+    }
+    100% {
+        transform: none;
+    }
+}
+
+/* ---------- confetti ---------- */
+#mcConfetti {
+    position: fixed;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: 2000;
+}
+
+/* ---------- rating summary + distribution ---------- */
+.rv-sum {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1.4rem;
+    align-items: center;
+}
+.rv-big {
+    text-align: center;
+    min-width: 110px;
+}
+.rv-big b {
+    display: block;
+    font-size: 2.8rem;
+    line-height: 1;
+    font-weight: 800;
+}
+.rv-big small {
+    display: block;
+    color: var(--muted, #7b8194);
+    margin-top: 0.25rem;
+    font-size: 0.75rem;
+}
+.rv-dist {
+    flex: 1;
+    min-width: 200px;
+}
+.rv-row {
+    display: flex;
+    align-items: center;
+    gap: 0.55rem;
+    font-size: 0.75rem;
+    margin: 0.28rem 0;
+    color: var(--muted, #7b8194);
+}
+.rv-row > span:first-child {
+    width: 22px;
+    white-space: nowrap;
+}
+.rv-row > span:last-child {
+    width: 26px;
+    text-align: right;
+}
+.rv-bar {
+    flex: 1;
+    height: 7px;
+    border-radius: 99px;
+    background: rgba(120, 125, 160, 0.16);
+    overflow: hidden;
+}
+.rv-bar i {
+    display: block;
+    height: 100%;
+    width: var(--w, 0%);
+    border-radius: 99px;
+    background: linear-gradient(90deg, #f5a623, #ffcf5c);
+    animation: rvGrow 1.1s cubic-bezier(0.2, 0.7, 0.2, 1) 0.25s backwards;
+}
+@keyframes rvGrow {
+    from {
+        width: 0;
+    }
+}
+
+/* ---------- review cards ---------- */
+.rv-item {
+    display: flex;
+    gap: 0.8rem;
+    padding: 0.9rem 0;
+    border-bottom: 1px dashed rgba(120, 125, 160, 0.25);
+}
+.rv-item:last-child {
+    border-bottom: 0;
+}
+.rv-av {
+    width: 38px;
+    height: 38px;
+    border-radius: 50%;
+    flex: none;
+    display: grid;
+    place-items: center;
+    font-weight: 700;
+    font-size: 0.78rem;
+    color: #fff;
+    background: linear-gradient(
+        135deg,
+        var(--pc, #2563eb),
+        var(--pc2, #0ea5e9)
+    );
+}
+.rv-body {
+    flex: 1;
+    min-width: 0;
+}
+.rv-top {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 0.2rem 0.6rem;
+}
+.rv-top b {
+    font-size: 0.88rem;
+}
+.rv-top small {
+    color: var(--muted, #7b8194);
+}
+.rv-text {
+    margin: 0.3rem 0 0.35rem;
+    font-size: 0.85rem;
+    line-height: 1.5;
+    white-space: pre-line;
+    overflow-wrap: anywhere;
+}
+.rv-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.3rem;
+}
+.rv-tags span {
+    font-size: 0.68rem;
+    padding: 0.12rem 0.55rem;
+    border-radius: 99px;
+    background: rgba(120, 125, 160, 0.12);
+    color: var(--muted, #6a7085);
+}
+.rv-empty {
+    text-align: center;
+    color: var(--muted, #7b8194);
+    padding: 1.4rem 0;
+}
+.rv-empty i {
+    font-size: 1.8rem;
+    color: #f5a623;
+    display: block;
+    margin-bottom: 0.3rem;
+}
+.rv-hidden {
+    opacity: 0.5;
+}
+@media (prefers-reduced-motion: reduce) {
+    .mc-rate *,
+    .rv-bar i {
+        animation: none !important;
+        transition: none !important;
+    }
+}
+
+/* dark mode inside dashboards */
+.mc-rate .modal-content {
+    background: var(--card, #fff);
+    color: var(--text, #1f2333);
+}
+.mc-rate .rate-tag span {
+    border-color: var(--line, #e3e5ee);
+    color: var(--muted, #5b6073);
+}
+.mc-rate textarea {
+    background: var(--card, #fff);
+    color: var(--text, #1f2333);
+    border-color: var(--line, #dee2e6);
+}

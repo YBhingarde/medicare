@@ -1,0 +1,110 @@
+/* Header account button: round photo (or initials), full name, role. Loaded after site.css so it overrides the old look. */
+.mc-um-btn {
+    gap: 0.65rem;
+    padding: 0.3rem 0.85rem 0.3rem 0.3rem;
+    background: linear-gradient(#fff, #f6f9ff);
+    box-shadow: 0 2px 10px rgba(37, 99, 235, 0.08);
+}
+.mc-um-av {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 40px;
+    height: 40px;
+    flex: 0 0 40px;
+    aspect-ratio: 1 / 1;
+    align-self: center;
+    border-radius: 50%;
+    overflow: hidden;
+    box-shadow: 0 0 0 2px #fff, 0 0 0 4px rgba(37, 99, 235, 0.35);
+}
+.mc-um-av img {
+    position: absolute;
+    inset: 0;
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: 50% 40%;
+    border-radius: 50%;
+}
+.mc-um-av.lg {
+    width: 54px;
+    height: 54px;
+    flex-basis: 54px;
+    font-size: 1.25rem;
+    box-shadow: 0 0 0 3px #fff, 0 0 0 5px rgba(37, 99, 235, 0.3);
+}
+.mc-um-text {
+    display: flex;
+    flex-direction: column;
+    min-width: 0;
+    text-align: left;
+    line-height: 1.2;
+}
+.mc-um-name {
+    max-width: 190px;
+    font-size: 0.93rem;
+    font-weight: 700;
+}
+.mc-um-role {
+    font-size: 0.72rem;
+    font-weight: 500;
+    color: #6b7692;
+}
+.mc-um-head {
+    gap: 0.85rem;
+    padding: 0.7rem 0.7rem 0.9rem;
+}
+.mc-um-who b {
+    font-size: 1rem;
+    white-space: normal;
+    word-break: break-word;
+}
+.mc-um-who small {
+    max-width: 190px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+.mc-um-badge {
+    align-self: flex-start;
+    margin-top: 0.35rem;
+    padding: 0.12rem 0.55rem;
+    border-radius: 999px;
+    background: #e7f0ff;
+    color: #2563eb;
+    font-size: 0.7rem;
+    font-weight: 700;
+}
+.mc-um-menu {
+    min-width: 270px;
+}
+
+/* dashboard top bar photo */
+.tb-photo {
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    object-fit: cover;
+    flex: none;
+    box-shadow: 0 0 0 2px #fff, 0 0 0 3px rgba(37, 99, 235, 0.3);
+}
+
+@media (max-width: 575.98px) {
+    .mc-um-name {
+        max-width: 105px;
+    }
+    .mc-um-role {
+        display: none;
+    }
+    .mc-um-menu {
+        min-width: 245px;
+    }
+}
+@media (max-width: 380px) {
+    .mc-um-text {
+        display: none;
+    }
+}
