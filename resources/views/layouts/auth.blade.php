@@ -1,4 +1,4 @@
-<!doctype html>
+  <!doctype html>
 <html lang="en">
 <head>@include('layouts.head')<title>@yield('title', 'MediCare')</title></head>
 <body>
